@@ -1,0 +1,17 @@
+{% extends "./layouts/main.jinja" %}
+{% block content %}
+<h1>List of Urls</h1>
+<div class="row mt-2">
+    <div class="list-group"></div>
+        {% if urls %}
+        {% for url in urls %}
+        <a target="blank" href="/urls/{{url.slug}}/details" class="list-group-item list-group-item-action">{{ url.url }}</a>
+        {% endfor %}
+        {% else %}
+            <h4 style="width:100%;margin:20px">No Links Created Yet</h4>
+            <img style="width:100%" src="https://64.media.tumblr.com/tumblr_mdn5x0RvKa1r75c30o1_500.gif" 
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "./layouts/main.jinja" %}
+{% block content %}
+<style>
+    body {
+        position: relative;
+    }
+</style>
+<h1>Dashboard</h1>
+<table class="table table-hover">
+    <tr>
+        <td>Username</td>
+        <td>{{ user.username }}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{ user.email }}</td>
+    </tr>
+    <tr>
+        <td>Firstname</td>
+        <td>{{ user.first_name }}</td>
+    </tr>
+    <tr>
+        <td>Lastname</td>
+        <td>{{ user.last_name }}</td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>*******************************</td>
+    </tr>
+    <tr>
+        <td>Last Login</td>
+        <td>{{ user.last_login }}</td>
+    </tr>
+    <tr>
+        <td>Last Login</td>
+        <td>{{ user.date_joined }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/edituser/{{user.id}}" class="btn btn-success">Edit User Info</a> <a href="/changepassword/" class="btn btn-danger">Change Password</a></td>
+    </tr>
+</table>
+{% endblock %}
+{% block js %}
+<script>
+    $('body').scrollspy({ target: '#navbar-example2' })
+</script>
+{% endblock %}

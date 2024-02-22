@@ -1,0 +1,27 @@
+{% extends "./layouts/main.jinja" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-center">Create Short Link</h1>
+        <form method="post" action="/urls/create/" class="needs-validation" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {{field.help_text}}
+                {% if field.errors %}
+                <div class="invalid-feedback">
+                    {% for error in field.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary btn-block">URL Shorten</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

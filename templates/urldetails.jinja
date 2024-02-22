@@ -1,0 +1,38 @@
+{% extends "./layouts/main.jinja" %}
+{% block content %}
+<div class="row mt-5">
+    <div class="mx-2">
+        <h5 class="card-title">Tracker Details:</h5>
+        <p>The Shortened Link:
+            <a class="d-block" href="/urls/{{object.slug}}">{{object.url}}</a>
+        </p>
+        {% if object.ip_set.all %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">IP</th>
+                    <th scope="col">User Agent</th>
+                    <th scope="col">Date/Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for ip in object.ip_set.all %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{ip.ip}}</td>
+                    <td style="font-size:0.7rem">{{ip.user_agent}}</td>
+                    <td>{{ip.created_at}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="display-1">No one visited my link yet..</div>
+        {% endif %}
+        <a href="/" class="btn btn-primary">Back to Home</a>
+    </div>
+</div>
+</div>
+{% endblock %}
